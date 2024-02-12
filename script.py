@@ -38,9 +38,7 @@ if __name__ == "__main__":
         response = client.create_security_group_rule(request)
         print("Response alindi")
         print(response)
-        __import__('os').environ['SG_RULE_ID'] = response.security_group_rule.id
-        sg_id = __import__('os').getenv("SG_RULE_ID")
-        print(sg_id)
+        subprocess.run('echo "sg_rule_id=' + response.security_group_rule.id + '" >> $GITHUB_ENV' , shell=True, check=True, text=True, stdout=subprocess.PIPE)
 
     except exceptions.ClientRequestException as e:
         print(e.status_code)
