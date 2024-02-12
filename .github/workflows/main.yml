@@ -20,7 +20,6 @@ jobs:
         run: |
           python script.py
           echo $SG_RULE_ID
-          echo "sg_rule_id=$SG_RULE_ID" >> $GITHUB_ENV
           cat $GITHUB_ENV
         env:
           CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
